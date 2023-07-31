@@ -1,0 +1,62 @@
+<Ranson_Window>:
+    RelativeLayout:
+        Image:
+            source: root.screen_picture
+            allow_stretch: False
+        Label:
+            text: "KinJal RansonWare"
+            font_size: 50
+            color: 1, 0, 0, .9
+            font_name: root.screen_font_two
+            pos_hint: {"center_x": .5, "center_y": .9}
+        Label:
+            text: str(root.get_id)
+            font_size: 35
+            color: 1, 0, 0, .9
+            font_name: root.screen_font_one
+            pos_hint: {"center_x": .5, "center_y": .2}
+        Label:
+            text: "Launch Decryption process"
+            font_size: 15
+            color: 1, 0, 0, .8
+            font_name: root.screen_font_one
+            pos_hint: {"center_x": .5, "center_y": .1}
+        Button:
+            canvas.before:
+                Color:
+                    rgba: 1, .6, .2, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "Decrypt Now"
+            size_hint: .5, .05
+            color: 1, 0, 0, 1
+            bold: True
+            font_name: root.screen_font_one
+            background_color: 0, 0, 0, 1
+            pos_hint: {"center_x": .5, "center_y": .05}
+            on_press: app.decrypt()
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .6, .4
+            pos_hint: {"center_x": .5 , "center_y": .5}
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, .05
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                text: "KinJal RansonWare"
+                color: 1, .6, .2, 1
+                bold: True
+                font_size: 20
+                size_hint: .1, .2
+                pos_hint: {"center_x": 0.5}
+            Label:
+                text: str(root.text)
+                halign: "center"
+                bold: True
+                font_size: 16
+                color: 1, .6, .2, 1
+                pos_hint: {"center_x": 0.5}

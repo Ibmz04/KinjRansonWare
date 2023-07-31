@@ -1,0 +1,102 @@
+<Ranson_Window>:
+    Label:
+        text: "KinJal RansonWare"
+        font_size: 50
+        color: 1, 0, 0, .9
+        font_name: root.screen_font_two
+        pos_hint: {"center_x": .5, "center_y": .9}
+    Lines:
+        size_hint: .6, .3
+        pos_hint: {"center_x": .5, "center_y": .6}
+        Label:
+            text: str(root.Ranson_timer)
+            color: root.timer_color
+            font_size: 60
+            font_name: root.screen_font_one
+    DescryptionProssess
+
+
+<DescryptionProssess>:
+    ranson_key: ranson_key
+    Label:
+        text: str(root.file_path_text)
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .4}
+    Lines_sc:
+        opacity: int(root.lines_opacity)
+        size_hint: .10, .10
+        pos_hint: {"center_x": .3, "center_y": .3}
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Scanned files"
+                bold: True
+            Label:
+                text: str(root.Scanned_files)
+    Lines_sc:
+        opacity: int(root.lines_opacity)
+        size_hint: .10, .10
+        pos_hint: {"center_x": .5, "center_y": .3}
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Decrypted files"
+                bold: True
+            Label:
+                text: str(root.Decrypted_files)
+    Lines_sc:
+        opacity: int(root.lines_opacity)
+        size_hint: .10, .11
+        pos_hint: {"center_x": .7, "center_y": .3}
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Undecrypted files"
+                bold: True
+            Label:
+                text: str(root.Undecrypted_files)
+                color: 1, 0, 0, 1
+
+    TextInput:
+        id: ranson_key
+        hint_text: "Write your key here"
+        background_color: 1, .4, .3, .4
+        multiline: False
+        size_hint: .6, .06
+        pos_hint: {"center_x": .5, "center_y": .15}
+        on_text_validate: root.launch_decryption(str(ranson_key.text))
+    Button:
+        canvas.before:
+            Color:
+                rgba: 0, 1, 0, .5
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "DECRYPT"
+        size_hint: .6, .05
+        background_color: 0, 0, 0, 1
+        pos_hint: {"center_x": .5, "center_y": .04}
+        disabled: root.disabled_decryption_button
+        on_press: root.launch_decryption(str(ranson_key.text))
+
+<Lines@RelativeLayout>:
+    canvas:
+        Color:
+            rgba: 1, 0, 0, .7
+        Line:
+            points: (0,30, 0,self.height, self.width/2,self.height, self.width/2,self.height-30, self.width,self.height-30, self.width,0, self.width/2,0, self.width/2,30, 0,30)
+        Color:
+            rgba: 0, 1, 0, .5
+        Line:
+            points: (self.width/2+5,self.height-25, self.width/2+5,self.height, self.width,self.height, self.width, self.height-25, self.width/2+5,self.height-25)
+        Line:
+            points: (0,0, 0,25, self.width/2-5,25, self.width/2-5,0 ,0,0)
+
+
+<Lines_sc@RelativeLayout>:
+    canvas:
+        Color:
+            rgba: 0, 1, 0, .6
+        Line:
+            points: (0,0, 0,self.height, self.width,self.height, self.width,0, 0,0)
+
